@@ -8,10 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint src/**/*.js"
+    "lint": "echo \"no lint\""
   },
   "devDependencies": {
-    "vite": "^3.0.9",
-    "eslint-config-custom": "*"
+    "vite": "^3.0.9"
   }
 }
