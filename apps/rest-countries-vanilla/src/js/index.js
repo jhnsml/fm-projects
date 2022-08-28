@@ -7,7 +7,6 @@ import filterByRegion from "./models/filter";
 import search from "./models/search";
 import countryPage from "./models/country";
 import { clearCountryPage, switchTheme } from "./views/view";
-import { countryCard } from "./customElements/countryCard";
 
 /* Controller */
 const initController = async () => {
