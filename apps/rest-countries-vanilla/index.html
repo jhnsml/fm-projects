@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" id="html">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.css" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800&display=swap" rel="stylesheet" />
+
+    <title>Where in the world - Frontend Mentor Project</title>
+</head>
+
+<body id="home">
+    <div id="app">
+        <header>
+            <nav>
+                <p>Where in the world?</p>
+                <button class="theme-btn">
+                    <i class="fas fa-sun"></i><span class="mode">Light Mode</span>
+                </button>
+            </nav>
+        </header>
+        <main>
+            <div class="search">
+                <form>
+                    <input type="search" name="search" id="search" class="fa"
+                        placeholder="&#xf002; Search by name..." />
+                </form>
+                <div class="filter">
+                    <p>Filter by Region</p>
+                    <div class="filter--list">
+                        <li>All</li>
+                        <li>Africa</li>
+                        <li>Americas</li>
+                        <li>Asia</li>
+                        <li>Europe</li>
+                        <li>Oceania</li>
+                    </div>
+                </div>
+            </div>
+            <div class="results"></div>
+            <div class="pagination"></div>
+        </main>
+        <footer>
+            <div>
+                <p>Challenge by
+                    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">
+                        Frontend Mentor
+                    </a>. Coded by <a href="https://github.com/jhnsml" target="_blank" rel="noopener noreferrer">John
+                        Samuel</a>.
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="./src/js/index.js"></script>
+</body>
+
+</html>
