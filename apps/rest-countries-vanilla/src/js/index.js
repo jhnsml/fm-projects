@@ -37,6 +37,5 @@ const initController = async () => {
 document.addEventListener("DOMContentLoaded", () => {
 	// Theme Switcher
 	elements.themeBtn.addEventListener("click", switchTheme);
-	countryCard();
 	initController();
 });
