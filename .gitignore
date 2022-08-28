@@ -8,10 +8,13 @@ node_modules
 # testing
 coverage
 
-# next.js
+# build
 .next/
 out/
 build
+dist
+dist-ssr
+*.local
 
 # misc
 .DS_Store
@@ -31,3 +34,13 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
