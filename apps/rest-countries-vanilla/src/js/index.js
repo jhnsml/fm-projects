@@ -6,7 +6,8 @@ import home from "./models/home";
 import filterByRegion from "./models/filter";
 import search from "./models/search";
 import countryPage from "./models/country";
-import { clearCountryPage, switchTheme } from "./views/view";
+import { clearCountryPage } from "./views/view";
+import { initializeTheme, switchTheme } from "./themeSwitcher";
 
 /* Controller */
 const initController = async () => {
@@ -35,7 +36,12 @@ const initController = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+	initializeTheme();
 	// Theme Switcher
-	elements.themeBtn.addEventListener("click", switchTheme);
+	elements.themeBtn.addEventListener("click", (e) => {
+		const currentTheme = document.documentElement.getAttribute("data-theme");
+
+		switchTheme(currentTheme);
+	});
 	initController();
 });

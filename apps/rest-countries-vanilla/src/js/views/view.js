@@ -1,21 +1,5 @@
 import elements from "../base";
 
-// Switching Theme
-export const switchTheme = () => {
-	const dataTheme = elements.html.getAttribute("data-theme");
-	if (dataTheme === "dark") {
-		elements.html.setAttribute("data-theme", "light");
-		elements.icon.classList.remove("fa-sun");
-		elements.icon.classList.add("fa-moon");
-		elements.mode.innerHTML = "Dark Mode";
-	} else {
-		elements.html.setAttribute("data-theme", "dark");
-		elements.icon.classList.remove("fa-moon");
-		elements.icon.classList.add("fa-sun");
-		elements.mode.innerHTML = "Light Mode";
-	}
-};
-
 // Rendering Results
 export const renderResults = (country) => {
 	const { name, flags, population, region, capital } = country || {};
