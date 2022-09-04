@@ -195,7 +195,6 @@ form {
 	padding: 1.4rem 2.4rem;
 	background: var(--elements-color);
 	position: relative;
-	margin-bottom: 0.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -214,6 +213,7 @@ form {
 	position: absolute;
 	width: 20rem;
 	box-shadow: 0 0.2rem 0.9rem var(--box-shadow-color);
+	margin-top: 0.4rem;
 }
 
 .filter:hover .options {

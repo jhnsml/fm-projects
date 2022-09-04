@@ -55,13 +55,17 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - [Vite](https://vitejs.dev/)
 - Semantic HTML5 markup
 - CSS
-  - CSS Custom properties
-  - CSS Grid
-  - prefer-color-scheme
+  - Custom properties
+  - Grid
+  - Flexbox
+  - Transitions
 - JS
   - Service Worker
   - Cache Storage
   - Local Storage
+  - Optimization
+    - Debounce
+    - Memoization
 - Mobile-first workflow
 
 ### What I learned
