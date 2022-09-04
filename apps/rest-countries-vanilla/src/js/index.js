@@ -1,5 +1,5 @@
 import "../css/style.css";
-import "../css/page-style.css";
+import "../css/country-page.css";
 import elements from "./base";
 import { fetchAllCountries, createIsoMap } from "./utils/utils";
 import home from "./models/home";

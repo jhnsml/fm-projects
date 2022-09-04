@@ -28,7 +28,7 @@ const countryPage = (data, iso) => {
 
 	elements.main.addEventListener("click", (e) => {
 		// Back btn
-		if (e.target.matches(".back-btn", ".back-btn i")) {
+		if (e.target.matches(".back-btn", ".back-btn svg")) {
 			clearCountryPage(e.target.parentElement);
 			elements.searchDiv.classList.remove("hide-search");
 			home(data);

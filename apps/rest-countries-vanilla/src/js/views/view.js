@@ -71,7 +71,12 @@ export const renderCountryPage = (country, isoMap) => {
 
 	const markup = `
 	  <div class="country-page-wrapper">
-	      <button class="btn back-btn"><i class="fas fa-arrow-left" href="#"></i>Back </button>
+	      <button class="btn back-btn">
+				<svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M5.81802 0.696699L6.87868 1.75736L3.3785 5.25754H16.7428L16.7428 6.74246H3.3785L6.87868 10.2426L5.81802 11.3033L0.514719 6L5.81802 0.696699Z" fill="var(--text-color)"/>
+				</svg>
+				Back
+				</button>
 	      <div class="country__detailed__data">
 	          <figure class="country__flag">
 	              <img src="${flags?.svg}" alt="${countryName}">
@@ -104,9 +109,9 @@ export const renderCountryPage = (country, isoMap) => {
 										${
 											borders?.length > 0
 												? `
-											<div class="country__details-bottom">
+											<div class="country-border-wrapper">
 												<h3 class="bold">Border Countries:</h3>
-												<div class="country__border-details" id="countryBorders">
+												<div class="country-borders" id="countryBorders">
 													${borderMarkup}
 												</div>
 											</div>`
