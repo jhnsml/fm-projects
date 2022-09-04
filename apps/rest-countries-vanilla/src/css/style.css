@@ -255,6 +255,7 @@ form {
 	width: 100%;
 	background: var(--elements-color);
 	border-radius: 0.6rem;
+	transition: var(--transition);
 }
 .results__container:hover {
 	transform: scale(1.025);
@@ -324,11 +325,11 @@ footer {
 
 .attribution {
 	text-align: center;
-	font-size: 0.9em;
+	font-size: 1rem;
 }
 
 .attribution a {
-	font-size: 1em;
+	font-size: 1.2rem;
 	text-decoration: underline;
 }
 

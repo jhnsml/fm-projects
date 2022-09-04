@@ -134,6 +134,10 @@ footer {
 	.country__details-main {
 		grid-template-areas: "left-col right-col";
 	}
+	.border-btn {
+		font-size: 1.4rem;
+		line-height: 1.9rem;
+	}
 }
 
 @media screen and (min-width: 850px) {
