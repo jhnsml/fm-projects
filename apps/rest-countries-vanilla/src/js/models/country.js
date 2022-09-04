@@ -18,7 +18,7 @@ const countryPage = (data, iso) => {
 			const countryName = e.target.closest(".results__container").dataset
 				.country;
 			const country = filterCountryName(countries, countryName);
-			elements.searchDiv.style.display = "none";
+			elements.searchDiv.classList.add("hide-search");
 			clearResults();
 			clearPagination();
 			renderCountryPage(country, iso);
@@ -29,9 +29,8 @@ const countryPage = (data, iso) => {
 	elements.main.addEventListener("click", (e) => {
 		// Back btn
 		if (e.target.matches(".back-btn", ".back-btn i")) {
-			console.log(e.target.parentElement);
 			clearCountryPage(e.target.parentElement);
-			elements.searchDiv.style.display = "flex";
+			elements.searchDiv.classList.remove("hide-search");
 			home(data);
 		}
 		// Border button

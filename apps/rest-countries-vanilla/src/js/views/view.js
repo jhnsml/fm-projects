@@ -9,18 +9,18 @@ export const renderResults = (country) => {
 		<div class="results__container" data-country="${countryName}">
 			<a class="results__link" href="#">
 				<figure class="country__fig">
-						<img src="${flags?.svg}" alt="${countryName}">
+						<img src="${flags?.svg}" alt="${countryName}" width="264" height="160">
 				</figure>
 				<div class="country__data">
 					<div class="country__data--top">
 							<h2 class="country__name">${countryName}</h2>
 					</div>
 					<div class="country__data--bottom">
-							<p class="country__population">Population: ${population.toLocaleString(
+							<p class="country__population"><span class="bold">Population:</span> ${population.toLocaleString(
 								"en-US"
 							)}</p>
-							<p class="country__region">Region: ${region}</p>
-							<p class="country__capital">Capital: ${capital}</p>
+							<p class="country__region"><span class="bold">Region:</span> ${region}</p>
+							<p class="country__capital"><span class="bold">Capital:</span> ${capital}</p>
 					</div>
 				</div>
 			</a>

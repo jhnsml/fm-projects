@@ -57,9 +57,11 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - CSS
   - CSS Custom properties
   - CSS Grid
+  - prefer-color-scheme
 - JS
   - Service Worker
   - Cache Storage
+  - Local Storage
 - Mobile-first workflow
 
 ### What I learned
