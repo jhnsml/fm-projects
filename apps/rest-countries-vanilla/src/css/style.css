@@ -78,6 +78,7 @@ nav {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	margin: 0 auto;
 }
 
 /* logo-text */
@@ -116,7 +117,6 @@ nav {
 main {
 	margin: 0 auto;
 	padding: 0 1.6rem;
-	max-width: 1200px;
 	height: auto;
 	display: flex;
 	flex-direction: column;
@@ -347,13 +347,16 @@ footer {
 		font-size: 2.4rem;
 		line-height: 3.3rem;
 	}
+	main {
+		padding: 0;
+	}
 	nav {
 		padding: 2.4rem 0;
 	}
 
-	main {
+	main,
+	nav {
 		width: 90%;
-		align-items: center;
 	}
 
 	.theme-btn {
@@ -367,78 +370,63 @@ footer {
 	}
 
 	.search {
-		flex-wrap: nowrap;
+		grid-template-areas: "search filter";
 		justify-content: space-between;
-		height: 4em;
+		margin-bottom: 4.8rem;
 	}
-
 	.search-input {
-		height: 3.5em;
+		width: 36rem;
+		padding: 1.9rem 3.2rem;
+		font-size: 1.4rem;
+		line-height: 2rem;
 	}
-
-	form {
-		flex-basis: 40%;
-	}
-
-	.filter {
-		flex-basis: 25%;
+	.search-input::placeholder {
+		font-size: 1.4rem;
+		line-height: 2rem;
 	}
 
 	.filter p {
-		padding: 1rem 0 1rem 0.5rem;
-		font-size: 0.95em;
+		padding: 1.8rem 2.4rem;
+		margin: 0;
 	}
 
-	.search,
-	.results {
+	.results,
+	.search {
 		width: 100%;
 	}
 
 	.results {
-		padding-top: 2.75em;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 26.4rem);
+		gap: 7.4rem;
 	}
 }
 
 @media screen and (min-width: 1000px) {
-	form {
-		flex-basis: 35%;
-	}
-
-	.filter {
-		flex-basis: 15%;
-	}
-
-	.filter p {
-		padding: 0.95rem 0 0.95rem 0.5rem;
-	}
-
 	.results {
-		padding-top: 2.75em;
-		grid-template-columns: repeat(3, 1fr);
-		grid-gap: 2.5em;
+		grid-template-columns: repeat(3, max-content);
 	}
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
 	.results {
-		padding-top: 2.75em;
-		grid-template-columns: repeat(4, 1fr);
-		grid-gap: 2.5em;
+		grid-template-columns: repeat(4, max-content);
+	}
+	main {
+		width: 100%;
 	}
 }
 
 .pagination {
 	display: grid;
 	width: 100%;
-	grid-gap: 10px;
-	grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+	grid-gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(3.5rem, 1fr));
 	grid-auto-flow: row;
 }
 
 @media (min-width: 500px) {
 	.pagination {
-		grid-template-columns: repeat(auto-fit, 35px);
+		grid-template-columns: repeat(auto-fit, 3.5rem);
 	}
 }
 
@@ -447,8 +435,8 @@ footer {
 	background: var(--elements-color);
 	color: var(--text-color);
 	border: none;
-	box-shadow: 1px 2px 3.5px var(--box-shadow-color);
-	border-radius: 2px;
+	box-shadow: 0.1rem 0.2rem 0.35rem var(--box-shadow-color);
+	border-radius: 0.2rem;
 }
 
 .page-btn:hover {

@@ -3,6 +3,11 @@
 	padding: 0 1.2rem;
 }
 
+.country-page-wrapper h2 {
+	font-weight: 800;
+	font-size: 2.2rem;
+	line-height: 3rem;
+}
 /* All buttons */
 
 .btn {
@@ -13,14 +18,17 @@
 	color: var(--text-color);
 	box-shadow: 0 0 0.7rem var(--card-box-shadow-color);
 	cursor: pointer;
+	transition: 0.2s ease-out;
 }
 
 .btn:hover {
-	transform: scale(1.2);
+	transform: scale(1.075);
+	transition: 0.35s ease-in-out;
 }
 
 .btn:active {
 	transform: scale(1);
+	transition: 0.2s ease-out;
 }
 
 .back-btn {
@@ -73,8 +81,18 @@
 
 .country__details-main {
 	display: grid;
-	grid-auto-flow: row;
+	grid-template-areas:
+		"left-col"
+		"right-col";
 	grid-gap: 3.2rem;
+}
+
+.country__details-main-left {
+	grid-area: left-col;
+}
+
+.country__details-main-right {
+	grid-area: right-col;
 }
 
 .country__details-main p {
@@ -101,11 +119,6 @@
 	flex-wrap: wrap;
 }
 
-/* text */
-h2 {
-	font-size: 1.4em;
-}
-
 .bold {
 	font-weight: 600;
 }
@@ -116,11 +129,10 @@ footer {
 @media screen and (min-width: 700px) {
 	.country__flag {
 		width: 100%;
-		height: 25em;
+		max-height: 36rem;
 	}
-	.country__border-details {
-		grid-template-columns: repeat(6, max-content);
-		grid-auto-flow: row;
+	.country__details-main {
+		grid-template-areas: "left-col right-col";
 	}
 }
 
@@ -128,44 +140,34 @@ footer {
 	.country__detailed__data {
 		display: grid;
 		grid-template-rows: initial;
-		grid-template-columns: 50% 47%;
-		grid-gap: 3%;
-		width: 100%;
-	}
-	.country__border-details {
-		grid-template-columns: repeat(3, max-content);
-		grid-auto-flow: row;
-	}
-	.country__flag {
-		height: 20em;
+		grid-template-columns: 1.2fr 1fr;
+		gap: 3.2rem;
 	}
 	.country__details-main {
 		grid-auto-flow: column;
 	}
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1100px) {
 	.country-page-wrapper p,
-	.country-page-wrapper span,
-	.country-page-wrapper .btn {
-		font-size: 1rem;
+	.country-page-wrapper span {
+		font-size: 1.6rem;
+		line-height: 3.2rem;
 	}
 
 	.country-page-wrapper h2 {
-		font-size: 1.5rem;
+		font-size: 3.2rem;
+		line-height: 4.4rem;
+	}
+	.country-page-wrapper h3 {
+		font-size: 1.6rem;
+		line-height: 2.4rem;
+	}
+	.country__detailed__data {
+		grid-template-columns: 56rem 1fr;
+		align-items: center;
 	}
 	.country__flag {
-		height: 30em;
-	}
-}
-
-@media screen and (min-width: 1800px) {
-	.country-page-wrapper p,
-	.country-page-wrapper span,
-	.country-page-wrapper .btn {
-		font-size: 1.2rem;
-	}
-	.country-page-wrapper h2 {
-		font-size: 1.7rem;
+		max-height: 40.1rem;
 	}
 }
