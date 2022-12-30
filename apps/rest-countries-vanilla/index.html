@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" id="html">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -17,21 +17,25 @@
     <div id="app">
         <header>
             <nav>
-                <p>Where in the world?</p>
+                <p class="logo-text">Where in the world?</p>
                 <button class="theme-btn">
-                    <i class="fas fa-sun"></i><span class="mode">Light Mode</span>
+                    <img alt="" class="icon"> <span class="current-theme">Light Mode</span>
                 </button>
             </nav>
         </header>
         <main>
             <div class="search">
                 <form>
-                    <input type="search" name="search" id="search" class="fa"
-                        placeholder="&#xf002; Search by name..." />
+                    <input type="search" name="search" class="search-input" placeholder="Search by name..." />
                 </form>
                 <div class="filter">
-                    <p>Filter by Region</p>
-                    <div class="filter--list">
+                    <p>Filter by Region <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9.45 3.45L6 6.9L2.55 3.45L1.5 4.5L6 9L10.5 4.5L9.45 3.45Z"
+                                fill="var(--text-color)" />
+                        </svg></p>
+                    <div class="options">
                         <li>All</li>
                         <li>Africa</li>
                         <li>Americas</li>
@@ -54,6 +58,48 @@
                 </p>
             </div>
         </footer>
+        <template id="country-card-template">
+            <style>
+                .country__fig img {
+                    display: block;
+                }
+
+                .country__name {
+                    color: black;
+                    font-weight: 700;
+                    font-size: 45px;
+                }
+
+                .wrapper {
+                    width: 250px;
+                    height: 350px;
+                }
+            </style>
+            <div class="wrapper">
+                <slot class="country__fig" name="country-image"></slot>
+                <slot class="country__name" name="country-name"></slot>
+                <p class="country__population">
+                    <slot name="country-population" part="info">
+                    </slot>
+                </p>
+                <p class="country__region"><span class="bold">Region:</span>
+                    <slot name="country-region" part="info"></slot>
+                </p>
+                <p class="country__capital"><span class="bold">Capital:</span>
+                    <slot name="country-capital" part="info"></slot>
+                </p>
+            </div>
+        </template>
+
+
+        <!-- <template id="detailed-country-card-template">
+            <slot name="countryImage" class="country-image"></slot>
+            <slot name="countryName" class="country-name"></slot>
+            <slot name="countryOfficialName" class="country-official-name"></slot>
+            <slot name="countryPop" class="country-population"></slot>
+            <slot name="countryRegion" class="country-region"></slot>
+            <slot name="countryCapital" class="country-capital"></slot>
+        </template> -->
     </div>
     <script type="module" src="./src/js/index.js"></script>
 </body>

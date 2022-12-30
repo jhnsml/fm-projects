@@ -1,48 +1,5 @@
-import elements from "../base";
-
-// Switching Theme
-export const switchTheme = () => {
-	const dataTheme = elements.html.getAttribute("data-theme");
-	if (dataTheme === "dark") {
-		elements.html.setAttribute("data-theme", "light");
-		elements.icon.classList.remove("fa-sun");
-		elements.icon.classList.add("fa-moon");
-		elements.mode.innerHTML = "Dark Mode";
-	} else {
-		elements.html.setAttribute("data-theme", "dark");
-		elements.icon.classList.remove("fa-moon");
-		elements.icon.classList.add("fa-sun");
-		elements.mode.innerHTML = "Light Mode";
-	}
-};
-
-// Rendering Results
-export const renderResults = (country) => {
-	const { name, flags, population, region, capital } = country || {};
-	const { common: countryName } = name;
-
-	return `
-		<div class="results__container" data-country="${countryName}">
-			<a class="results__link" href="#">
-				<figure class="country__fig">
-						<img src="${flags?.svg}" alt="${countryName}">
-				</figure>
-				<div class="country__data">
-					<div class="country__data--top">
-							<h2 class="country__name">${countryName}</h2>
-					</div>
-					<div class="country__data--bottom">
-							<p class="country__population">Population: ${population.toLocaleString(
-								"en-US"
-							)}</p>
-							<p class="country__region">Region: ${region}</p>
-							<p class="country__capital">Capital: ${capital}</p>
-					</div>
-				</div>
-			</a>
-		</div>
-	`;
-};
+import elements from "@js/base";
+import { Country } from "@/index";
 
 // Search View clear results
 export const clearResults = () => {
@@ -54,12 +11,15 @@ export const clearResults = () => {
 // Show 404 error page
 export const showError = () => {
 	const markup = `<h2 style="width: 90vh">No results found. Please check the spelling</h2>`;
-	elements.results.insertAdjacentHTML("afterbegin", markup);
+	elements.results?.insertAdjacentHTML("afterbegin", markup);
 };
 
 /* Render Country details page */
 
-export const renderCountryPage = (country, isoMap) => {
+export const renderCountryPage = (
+	country: Country,
+	isoMap: Record<string, string>
+) => {
 	const {
 		borders,
 		name,
@@ -74,7 +34,7 @@ export const renderCountryPage = (country, isoMap) => {
 		timezones,
 	} = country;
 	const { common: countryName, official: officialCountryName } = name;
-	const convertIsoToName = (ISO3) => isoMap[ISO3];
+	const convertIsoToName = (ISO3: string) => isoMap[ISO3];
 	const generateBorderMarkup = () =>
 		borders?.map((country) => {
 			const countryName = convertIsoToName(country);
@@ -85,9 +45,17 @@ export const renderCountryPage = (country, isoMap) => {
 		});
 	const borderMarkup = generateBorderMarkup()?.join("") || [];
 
+	const currencyName = currencies ? Object.values(currencies)?.[0]?.name : "";
+	const allLanguages = languages ? Object.values(languages)?.join(", ") : "";
+
 	const markup = `
 	  <div class="country-page-wrapper">
-	      <button class="btn back-btn"><i class="fas fa-arrow-left" href="#"></i>Back </button>
+	      <button class="btn back-btn">
+				<svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M5.81802 0.696699L6.87868 1.75736L3.3785 5.25754H16.7428L16.7428 6.74246H3.3785L6.87868 10.2426L5.81802 11.3033L0.514719 6L5.81802 0.696699Z" fill="var(--text-color)"/>
+				</svg>
+				Back
+				</button>
 	      <div class="country__detailed__data">
 	          <figure class="country__flag">
 	              <img src="${flags?.svg}" alt="${countryName}">
@@ -107,22 +75,18 @@ export const renderCountryPage = (country, isoMap) => {
 												)}</p>
 	                  </div>
 	                  <div class="country__details-main-right">
-										<p><span class="bold">Currencies: </span>${
-											Object.values(currencies)?.[0]?.name
-										}</p>
-	                      <p><span class="bold">Languages: </span>${Object.values(
-													languages
-												)?.join(", ")}</p>
+										<p><span class="bold">Currencies: </span>${currencyName}</p>
+	                      <p><span class="bold">Languages: </span>${allLanguages}</p>
 												<p><span class="bold">Timezones: </span>${timezones?.join(", ")}</p>
 													<p><span class="bold">Top Level Domain: </span>${tld?.join(", ")}</p>
 	                  </div>
 	              </div>
 										${
-											borders?.length > 0
+											borders && borders?.length > 0
 												? `
-											<div class="country__details-bottom">
+											<div class="country-border-wrapper">
 												<h3 class="bold">Border Countries:</h3>
-												<div class="country__border-details" id="countryBorders">
+												<div class="country-borders" id="countryBorders">
 													${borderMarkup}
 												</div>
 											</div>`
@@ -131,14 +95,14 @@ export const renderCountryPage = (country, isoMap) => {
 	          </div>
 	      </div>
 	  </div> `;
-	elements.main.insertAdjacentHTML("beforeend", markup);
+	elements.main?.insertAdjacentHTML("beforeend", markup);
 };
 
-export const clearCountryPage = (el) => {
+export const clearCountryPage = (el: Element) => {
 	el.remove();
 };
 
-const generatePageNumbers = (num) => {
+const generatePageNumbers = (num: number) => {
 	let markup = "";
 	let i = 1;
 	while (i <= num) {
@@ -147,9 +111,9 @@ const generatePageNumbers = (num) => {
 	}
 	return markup;
 };
-export const paginationNumbers = (num) => {
+export const paginationNumbers = (num: number) => {
 	const markup = generatePageNumbers(num);
-	elements.pagination.insertAdjacentHTML("beforeend", markup);
+	elements.pagination?.insertAdjacentHTML("beforeend", markup);
 };
 
 export const clearPagination = () => {

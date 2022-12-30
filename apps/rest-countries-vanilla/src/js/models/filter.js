@@ -8,7 +8,7 @@ const filter = (data) => {
 	const allCountries = [...data];
 	const countries = [...data];
 	elements.filter.addEventListener("click", (e) => {
-		if (e.target.matches(".filter--list li, .filter--list li *")) {
+		if (e.target.matches(".options li, .options li *")) {
 			const query = e.target.innerText;
 			if (query !== "All") {
 				const countriesByRegion = filterByRegion(countries, query);

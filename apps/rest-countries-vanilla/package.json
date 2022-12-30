@@ -11,6 +11,10 @@
     "lint": "echo \"no lint\""
   },
   "devDependencies": {
-    "vite": "^3.0.9"
+    "tsconfig": "workspace:*",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "vite": "^4.0.3"
   }
 }
