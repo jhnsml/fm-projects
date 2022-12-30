@@ -58,6 +58,48 @@
                 </p>
             </div>
         </footer>
+        <template id="country-card-template">
+            <style>
+                .country__fig img {
+                    display: block;
+                }
+
+                .country__name {
+                    color: black;
+                    font-weight: 700;
+                    font-size: 45px;
+                }
+
+                .wrapper {
+                    width: 250px;
+                    height: 350px;
+                }
+            </style>
+            <div class="wrapper">
+                <slot class="country__fig" name="country-image"></slot>
+                <slot class="country__name" name="country-name"></slot>
+                <p class="country__population">
+                    <slot name="country-population" part="info">
+                    </slot>
+                </p>
+                <p class="country__region"><span class="bold">Region:</span>
+                    <slot name="country-region" part="info"></slot>
+                </p>
+                <p class="country__capital"><span class="bold">Capital:</span>
+                    <slot name="country-capital" part="info"></slot>
+                </p>
+            </div>
+        </template>
+
+
+        <!-- <template id="detailed-country-card-template">
+            <slot name="countryImage" class="country-image"></slot>
+            <slot name="countryName" class="country-name"></slot>
+            <slot name="countryOfficialName" class="country-official-name"></slot>
+            <slot name="countryPop" class="country-population"></slot>
+            <slot name="countryRegion" class="country-region"></slot>
+            <slot name="countryCapital" class="country-capital"></slot>
+        </template> -->
     </div>
     <script type="module" src="./src/js/index.js"></script>
 </body>

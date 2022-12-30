@@ -1,0 +1,29 @@
+{
+  // We extend it from here!
+  "extends": "tsconfig/vanilla.json",
+  // You can specify your own include/exclude
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@css/*": [
+        "./src/css/*"
+      ],
+      "@js/*": [
+        "./src/js/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ]
+    }
+  }
+}

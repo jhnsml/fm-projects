@@ -1,32 +1,5 @@
-import elements from "../base";
-
-// Rendering Results
-export const renderResults = (country) => {
-	const { name, flags, population, region, capital } = country || {};
-	const { common: countryName } = name;
-
-	return `
-		<div class="results__container" data-country="${countryName}">
-			<a class="results__link" href="#">
-				<figure class="country__fig">
-						<img src="${flags?.svg}" alt="${countryName}" width="264" height="160">
-				</figure>
-				<div class="country__data">
-					<div class="country__data--top">
-							<h2 class="country__name">${countryName}</h2>
-					</div>
-					<div class="country__data--bottom">
-							<p class="country__population"><span class="bold">Population:</span> ${population.toLocaleString(
-								"en-US"
-							)}</p>
-							<p class="country__region"><span class="bold">Region:</span> ${region}</p>
-							<p class="country__capital"><span class="bold">Capital:</span> ${capital}</p>
-					</div>
-				</div>
-			</a>
-		</div>
-	`;
-};
+import elements from "@js/base";
+import { Country } from "@/index";
 
 // Search View clear results
 export const clearResults = () => {
@@ -38,12 +11,15 @@ export const clearResults = () => {
 // Show 404 error page
 export const showError = () => {
 	const markup = `<h2 style="width: 90vh">No results found. Please check the spelling</h2>`;
-	elements.results.insertAdjacentHTML("afterbegin", markup);
+	elements.results?.insertAdjacentHTML("afterbegin", markup);
 };
 
 /* Render Country details page */
 
-export const renderCountryPage = (country, isoMap) => {
+export const renderCountryPage = (
+	country: Country,
+	isoMap: Record<string, string>
+) => {
 	const {
 		borders,
 		name,
@@ -58,7 +34,7 @@ export const renderCountryPage = (country, isoMap) => {
 		timezones,
 	} = country;
 	const { common: countryName, official: officialCountryName } = name;
-	const convertIsoToName = (ISO3) => isoMap[ISO3];
+	const convertIsoToName = (ISO3: string) => isoMap[ISO3];
 	const generateBorderMarkup = () =>
 		borders?.map((country) => {
 			const countryName = convertIsoToName(country);
@@ -68,6 +44,9 @@ export const renderCountryPage = (country, isoMap) => {
 			)}</button>`;
 		});
 	const borderMarkup = generateBorderMarkup()?.join("") || [];
+
+	const currencyName = currencies ? Object.values(currencies)?.[0]?.name : "";
+	const allLanguages = languages ? Object.values(languages)?.join(", ") : "";
 
 	const markup = `
 	  <div class="country-page-wrapper">
@@ -96,18 +75,14 @@ export const renderCountryPage = (country, isoMap) => {
 												)}</p>
 	                  </div>
 	                  <div class="country__details-main-right">
-										<p><span class="bold">Currencies: </span>${
-											Object.values(currencies)?.[0]?.name
-										}</p>
-	                      <p><span class="bold">Languages: </span>${Object.values(
-													languages
-												)?.join(", ")}</p>
+										<p><span class="bold">Currencies: </span>${currencyName}</p>
+	                      <p><span class="bold">Languages: </span>${allLanguages}</p>
 												<p><span class="bold">Timezones: </span>${timezones?.join(", ")}</p>
 													<p><span class="bold">Top Level Domain: </span>${tld?.join(", ")}</p>
 	                  </div>
 	              </div>
 										${
-											borders?.length > 0
+											borders && borders?.length > 0
 												? `
 											<div class="country-border-wrapper">
 												<h3 class="bold">Border Countries:</h3>
@@ -120,14 +95,14 @@ export const renderCountryPage = (country, isoMap) => {
 	          </div>
 	      </div>
 	  </div> `;
-	elements.main.insertAdjacentHTML("beforeend", markup);
+	elements.main?.insertAdjacentHTML("beforeend", markup);
 };
 
-export const clearCountryPage = (el) => {
+export const clearCountryPage = (el: Element) => {
 	el.remove();
 };
 
-const generatePageNumbers = (num) => {
+const generatePageNumbers = (num: number) => {
 	let markup = "";
 	let i = 1;
 	while (i <= num) {
@@ -136,9 +111,9 @@ const generatePageNumbers = (num) => {
 	}
 	return markup;
 };
-export const paginationNumbers = (num) => {
+export const paginationNumbers = (num: number) => {
 	const markup = generatePageNumbers(num);
-	elements.pagination.insertAdjacentHTML("beforeend", markup);
+	elements.pagination?.insertAdjacentHTML("beforeend", markup);
 };
 
 export const clearPagination = () => {

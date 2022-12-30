@@ -1,13 +1,14 @@
-import "../css/style.css";
-import "../css/country-page.css";
-import elements from "./base";
-import { fetchAllCountries, createIsoMap } from "./utils/utils";
-import home from "./models/home";
-import filterByRegion from "./models/filter";
-import search from "./models/search";
-import countryPage from "./models/country";
-import { clearCountryPage } from "./views/view";
-import { initializeTheme, switchTheme } from "./themeSwitcher";
+import "@css/style.css";
+import "@css/country-page.css";
+import elements from "@js/base";
+import { fetchAllCountries, createIsoMap } from "@js/utils/utils";
+import home from "@js/models/home";
+import filterByRegion from "@js/models/filter";
+import search from "@js/models/search";
+import countryPage from "@js/models/country";
+import { clearCountryPage } from "@js/views/view";
+import { initializeTheme, switchTheme } from "@js/themeSwitcher";
+import { addCustomElement } from "@js/utils/webComponentUtils";
 
 /* Controller */
 const initController = async () => {
@@ -43,5 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		switchTheme(currentTheme);
 	});
+	addCustomElement();
+
 	initController();
 });
